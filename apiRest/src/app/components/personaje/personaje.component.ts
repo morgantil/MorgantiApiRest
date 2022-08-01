@@ -8,14 +8,13 @@ import { Personaje } from '../../model/personajeInterface';
   styleUrls: ['./personaje.component.scss']
 })
 export class PersonajeComponent implements OnInit {
-public listaPersonaje = new Array;
+public listaPersonaje:Personaje[] = [];
   constructor(private http:HttpClient) { }
 
   ngOnInit(): void {
 
     this.http.get<Personaje[]>('https://62e31bd53891dd9ba8f450e1.mockapi.io/personajes').subscribe (data =>{
-      console.log(data);
-      this.listaPersonaje.push(data);
+      this.listaPersonaje=data;
     })
 console.log('LA LISTA ES',this.listaPersonaje);
 
